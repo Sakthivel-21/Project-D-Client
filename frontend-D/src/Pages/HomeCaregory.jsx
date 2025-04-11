@@ -1,20 +1,30 @@
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import ButtonComponent from '../Components/ButtonComponent'
-import ac from '../assets/ac.jpg'
-import bus from '../assets/bus.jpg'
-import hospital from '../assets/hospital.jpg'
-import hotel from '../assets/hotel.jpg'
-import hotels from '../assets/hotels.jpeg'
+import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 
 function HomeCaregory() {
 
-  const data = Array.from({ length: 30 }, (_, i) => `Data ${i + 1}`);
 
+  axios.defaults.withCredentials= true;
+
+  const [data , setData] = useState([])
   const [showMore, setShowMore] = useState(false);
 
-  // Determine how many items to show
-  const visibleData = showMore ? data : data.slice(0, 10);
+  useEffect (() => {
+      axios.get("http://localhost:8000/dindigul/categories/")
+      .then(response => {
+         setData(response.data)
+
+      })
+      .catch ((err) => {
+        console.log(err)
+      })
+  })
+
+  
+  const visibleData = showMore ? data : data.slice(0, 16);
 
   return (
    <>
@@ -32,29 +42,38 @@ function HomeCaregory() {
           ))}
         </div>*/}
      
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-24 ml-8 mr-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-8 ml-8 mr-8 justify-items-center">
           {visibleData.map((item, index) => (
-            <div
+            <Link to={`/dindigul/categories/${item.id}/places/`}>
+              <div
               key={index}
-              className="bg-white p-2 shadow rounded text-center text-gray-800 font-medium"
+              className="w-full bg-white p-2 shadow-lg border  items-center rounded text-center text-gray-800 font-medium 
+              transform transition-transform duration-300 hover:scale-110"
             >
-              <img src={ac} alt='' className='w-32 h-32 lg:ml-8'></img>
-              {item}
-            </div>
+              <img src={item.image} alt='' className='w-32 h-32 items-center '></img>
+              {item.name}
+            </div></Link>
           ))}
+         
         </div>
 
-        {!showMore && (
+        <div className='grid justify-items-center mt-8'>
+          <Link to='/categories'><ButtonComponent>More Categories</ButtonComponent></Link>
+        </div>
+
+        
+       
+        {/*{!showMore && (
           <div className="flex justify-center mt-6">
             {/*<button
               onClick={() => setShowMore(true)}
               className="bg-blue-600 text-white px-6 py-2 rounded shadow hover:bg-blue-700 transition"
             >
               More Categories
-            </button>*/}
-            <ButtonComponent onClick={() => setShowMore(true)}>More Categories</ButtonComponent>
+            </button>
+            <ButtonComponent onClick={() => setShowMore(true)} className='mt-8'>More Categories</ButtonComponent>
           </div>
-        )}
+        )}*/}
  
 
 

@@ -11,6 +11,11 @@ import Login from './Pages/Login'
 import Register from './Pages/Register'
 import Navbar from './Pages/Navbar'
 import Footer from './Pages/Footer'
+import CategoriesForm from './Pages/CategoriesForm'
+import CategoriesDetails from './Pages/CategoriesDetails'
+import CategoriesList from './Pages/CategoriesList'
+import Contact from './Pages/Contact'
+import Mission from './Pages/Mission'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,11 +24,16 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar/>
-        <Routes>
+         <Routes>
            <Route path='/' element={<Home/>}></Route>
            <Route path='/categories' element={<Categories/>}></Route>
            <Route path='/login' element={<Login/>}></Route>
            <Route path='/register' element={<Register/>}></Route>
+           <Route path='/categories/form' element={<CategoriesForm/>}></Route>
+           <Route path='/dindigul/categories/:id/places/' element={<CategoriesList/>}></Route>
+           <Route path='/dindigul/places/:id/' element={<CategoriesDetails/>}></Route>
+           <Route path='/contact' element={<Contact/>}></Route>
+           <Route path='/mission' element={<Mission/>}></Route>
         </Routes> 
         <Footer/>
       </BrowserRouter>
