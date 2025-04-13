@@ -16,7 +16,7 @@ const images = [img1, img2, img3, img4];
 
 const Hero = () => {
   return (
-    <div className="flex flex-col  w-full h-[500px] bg-gray-100  mt-12 mb-12">
+    <div className="flex flex-col  w-full h-[550px] lg:h-[650px] bg-gray-100  mb-12">
       <div className="w-full">
         <Swiper
           modules={[Autoplay]}
@@ -26,16 +26,17 @@ const Hero = () => {
         >
           {images.map((src, index) => (
             <SwiperSlide key={index}>
-              <img src={src} alt={`Slide ${index + 1}`} className="w-full   h-[550px]" />
+              <img src={src} alt={`Slide ${index + 1}`} className="w-full h-[550px]  lg:h-[650px]" />
               <div className="absolute inset-0   bg-black bg-opacity-30  ">
-                <h1 className="text-white text-2xl font-bold pt-64 pl-32">Welcome to Dindigul City ! </h1>
-                <p className="text-gray-100 text-sm  sm:w-[600px]  mt-12 pl-4 pr-4">
+                <div className="ml-4 mr-6 mt-[270px] w-full lg:w-[650px] justify-items-center py-8">
+                <h1 className="text-white text-2xl font-bold pt-4 ">Welcome to Dindigul City ! </h1>
+                <p className="text-gray-100 text-sm  sm:w-[600px] pt-4   pr-4">
                 The ultimate directory of workplaces and services in Dindigul district! Whether you're looking for colleges, industries, skilled professionals, repair services, or local businesses, we provide a comprehensive database to help you find the right place with ease.
 
 
                 </p>
-                <ButtonComponent className=' bg-blue-500 hover:bg-blue-600 mt-12 ml-48 text-white'><Link to='/categories'>Explore </Link></ButtonComponent>
-           
+                <ButtonComponent className='mt-4 bg-blue-500 hover:bg-blue-600   text-white'><Link to='/categories'>Explore </Link></ButtonComponent>
+           </div>
                    </div>
             </SwiperSlide>
           ))}
