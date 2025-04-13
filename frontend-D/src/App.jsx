@@ -16,6 +16,9 @@ import CategoriesDetails from './Pages/CategoriesDetails'
 import CategoriesList from './Pages/CategoriesList'
 import Contact from './Pages/Contact'
 import Mission from './Pages/Mission'
+import axios from 'axios';
+import AboutPage from './Pages/AboutPage'
+import OffersPage from './Pages/Offers'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -26,6 +29,7 @@ function App() {
         <Navbar/>
          <Routes>
            <Route path='/' element={<Home/>}></Route>
+           <Route path='/aboutpage' element={<AboutPage/>}></Route>
            <Route path='/categories' element={<Categories/>}></Route>
            <Route path='/login' element={<Login/>}></Route>
            <Route path='/register' element={<Register/>}></Route>
@@ -34,6 +38,7 @@ function App() {
            <Route path='/dindigul/places/:id/' element={<CategoriesDetails/>}></Route>
            <Route path='/contact' element={<Contact/>}></Route>
            <Route path='/mission' element={<Mission/>}></Route>
+           <Route path='/offers' element={<OffersPage/>}></Route>
         </Routes> 
         <Footer/>
       </BrowserRouter>

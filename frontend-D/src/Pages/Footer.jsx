@@ -7,7 +7,7 @@ const Footer = () => {
       
       <div className="container mx-auto px-6">
         {/* Our Mission Section */}
-       
+       <h1 className="text-center text-2xl font-bold text-black pb-6">Dindigul City</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
           {/* Other Services Section */}
           <div className="sm:ml-32">

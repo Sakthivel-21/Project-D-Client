@@ -131,7 +131,7 @@ function Categories() {
 
   return (
     <>
-      <h1 className="text-center p-8 font-bold text-2xl underline decoration-blue-400">Categories</h1>
+      <h1 className="text-center pt-12 font-bold text-2xl underline decoration-blue-400">Categories</h1>
 
       <div className="flex flex-col items-center justify-center min-h-fit  p-4">
         <div className="w-full max-w-md">

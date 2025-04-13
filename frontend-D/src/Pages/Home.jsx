@@ -4,6 +4,8 @@ import Hero from './Hero'
 import HomeCaregory from './HomeCaregory'
 import Contact from './Contact'
 import Mission from './Mission'
+import AboutPage from './AboutPage'
+import OffersPage from './Offers'
 //import Hero from './Hero'
 
 function Home() {
@@ -12,7 +14,9 @@ function Home() {
     
     <Hero/>
     <Mission/>
+    <AboutPage/>
     <HomeCaregory/>
+    <OffersPage/>
     <Contact/>
     </>
   )
