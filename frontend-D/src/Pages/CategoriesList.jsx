@@ -51,7 +51,7 @@ function CategoriesList() {
                </div>*/}
 
 <div className="w-full mt-6">
-      <h2 className="text-3xl font-semibold mb-8 text-center">Places List</h2>
+      <h2 className="text-2xl font-semibold mb-8 text-center  underline decoration-blue-400">Places List</h2>
 
       <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 ml-4 mr-4">
         {data.map((item, index) => (

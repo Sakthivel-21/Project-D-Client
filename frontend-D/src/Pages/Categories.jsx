@@ -131,7 +131,7 @@ function Categories() {
 
   return (
     <>
-      <h1 className="text-center pt-12 font-bold text-2xl underline decoration-blue-400">Categories</h1>
+      <h1 className="text-center pt-12 font-bold text-2xl  text-blue-400 ">Categories</h1>
 
       <div className="flex flex-col items-center justify-center min-h-fit  p-4">
         <div className="w-full max-w-md">
@@ -148,7 +148,7 @@ function Categories() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-8 ml-8 mr-8 justify-items-center mt-6">
+      <div className="grid grid-cols-2 mb-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 lg:gap-8 ml-8 mr-8 justify-items-center mt-6">
         {data.map((item, index) => (
           <Link key={item.id} to={`/dindigul/categories/${item.id}/places/`}>
             <div

@@ -1,116 +1,158 @@
 import React, { useState } from "react";
-import img from '../assets/biriyani.jpeg';
+import emailjs from "@emailjs/browser";
+import contactImage from "../assets/summary.jpg";
 import ButtonComponent from "../Components/ButtonComponent";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
+  
     message: "",
   });
 
-  const [submitted, setSubmitted] = useState(false);
-
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    setSubmitted(true);
+
+    emailjs
+      .send(
+        "service_9u9df5r",      // replace with your EmailJS service ID
+        "template_1p1yo7g",     // replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        "EFaU7KpjVQKnt_0Kn"       // replace with your EmailJS public key
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+          alert("Thank you for your message! We'll get back to you soon.");
+          setFormData({ name: "", email: "",  message: "" });
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   return (
-    <>
-    <h2 className="text-2xl font-bold text-black underline text-center decoration-blue-400 ">Contact Us</h2>
-   
-    <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 via-white to-blue-100 flex items-center justify-center px-4 py-10 mt-8">
-      <div className="w-full max-w-6xl flex flex-col md:flex-row items-stretch gap-10">
+    <div className="container mx-auto px-4 py-12">
+      <h1 className="text-2xl font-bold text-center text-blue-400 mb-12 ">
+        Get in Touch
+      </h1>
 
-        {/* Left Side - Image */}
-        <div className="w-full md:w-1/2">
-          <div className="h-full rounded-3xl overflow-hidden shadow-2xl border-[6px] border-white">
-            <img
-              src={img}
-              alt="Contact Visual"
-              className="w-full h-full object-cover"
-            />
+      <div className="flex flex-col md:flex-row bg-gradient-to-br from-blue-50 via-white to-blue-100 rounded-2xl shadow-xl overflow-hidden">
+        {/* Left Side - Image Section */}
+        <div className="w-full md:w-1/2 relative">
+          <img
+            src={contactImage}
+            alt="Contact"
+            className="w-full lg:h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent flex flex-col justify-center px-8 text-white">
+            <h2 className="text-2xl font-bold mb-4">
+              We’d love to hear from you!
+            </h2>
+            <p className="text-lg mb-6">
+              Feel free to reach out using the form, or contact us directly.
+            </p>
+            <div className="space-y-3">
+              <p className="flex items-center">
+                <span className="mr-2">📍</span> 123 Main Street, Dindigul
+              </p>
+              <p className="flex items-center">
+                <span className="mr-2">📞</span> +91 987 654 3210
+              </p>
+              <p className="flex items-center">
+                <span className="mr-2">✉️</span> info@dindigulcity.com
+              </p>
+            </div>
           </div>
         </div>
 
-        {/* Right Side - Form */}
-        <div className="w-full md:w-1/2 flex items-stretch">
-          <div className="backdrop-blur-xl bg-white/60 shadow-lg rounded-3xl p-8 md:p-10 border border-white/30 w-full">
-            <h2 className="text-3xl font-bold text-blue-700 mb-2">Get in Touch</h2>
-            <p className="text-gray-700 mb-6">Have questions? We'd love to hear from you!</p>
+        {/* Right Side - Contact Form */}
+        <div className="w-full md:w-1/2 p-8 flex flex-col justify-center">
+          <h2 className="text-xl font-semibold text-gray-800 mb-6 text-center">
+            Send Us a Message
+          </h2>
 
-            {submitted ? (
-              <div className="text-green-600 font-semibold text-lg">Thanks! We'll be in touch soon.</div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block text-sm text-gray-800 mb-1">Name</label>
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="John Doe"
-                    className="w-full border border-gray-300 bg-white/80 backdrop-blur-md rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-800 mb-1">Email</label>
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className="w-full border border-gray-300 bg-white/80 backdrop-blur-md rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-800 mb-1">Phone</label>
-                  <input
-                    type="number"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="1234567890"
-                    className="w-full border border-gray-300 bg-white/80 backdrop-blur-md rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm text-gray-800 mb-1">Message</label>
-                  <textarea
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                    placeholder="Write your message here..."
-                    className="w-full border border-gray-300 bg-white/80 backdrop-blur-md rounded-xl px-4 py-2 h-28 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  ></textarea>
-                </div>
-                <ButtonComponent 
-                  type="submit"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition duration-300"
-                >
-                  Send Message
-                </ButtonComponent>
-              </form>
-            )}
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <label htmlFor="name" className="block text-gray-700 mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-gray-700 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            {/*<div>
+              <label htmlFor="phone" className="block text-gray-700 mb-2">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Enter your phone number"
+              />
+            </div>*/}
+
+            <div>
+              <label htmlFor="message" className="block text-gray-700 mb-2">
+                Your Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                rows="4"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                placeholder="Type your message here.."
+                required
+              ></textarea>
+            </div>
+
+            <ButtonComponent type="submit">Send Message</ButtonComponent>
+          </form>
         </div>
-
       </div>
     </div>
-    </>
   );
 };
 

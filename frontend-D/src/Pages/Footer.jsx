@@ -1,78 +1,78 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Footer = () => {
+  const createSlug = (text) => text.toLowerCase().replace(/\s/g, "-");
+
   return (
-    <footer className="bg-blue-400 text-white py-8 mt-10">
-      
-      <div className="container mx-auto px-6">
-        {/* Our Mission Section */}
-       <h1 className="text-center text-2xl font-bold text-black pb-6">Dindigul City</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
-          {/* Other Services Section */}
-          <div className="sm:ml-32">
-            <h3 className="text-lg font-semibold text-black  underline decoration-black">Other Services</h3>
-            <ul className="mt-2 space-y-2">
+    <footer className="bg-blue-400 text-white py-6">
+      <div className="container mx-auto px-4">
+        {/* Title */}
+        <div className="text-center mb-6">
+          <h1 className="text-xl font-bold">Dindigul City</h1>
+          <p className="text-sm text-blue-200">Your Ultimate Guide</p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm lg:ml-64">
+          {/* Services */}
+          <div>
+            <h3 className="font-semibold mb-2">Services</h3>
+            <ul className="space-y-1">
               {[
-                "Digital Marketing", "Website & Mobile APP", "Web-Hosting and Domain purchase services",
-                "Visiting card, Banner, Boucher Printing Services", "Designing services"
-                
-                
-              ].map((service, index) => (
-                <li key={index}>
-                  <Link to={`/${service.toLowerCase().replace(/\s/g, "-")}`} className="hover:text-blue-400 text-gray-700 transition">
+                "Digital Marketing",
+                "Website & Mobile APP",
+                "Web-Hosting",
+                "Card Printing",
+                "Designing"
+              ].map((service, i) => (
+                <li key={i}>
+                  <a href={`/${createSlug(service)}`} className="hover:underline text-blue-100">
                     {service}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-            {/* Menu & Services */}
-     
-          {/* Menu Section */}
-          <div className="sm:ml-52">
-            <h3 className="text-lg font-semibold text-black  underline decoration-black">Menu</h3>
-            <ul className="mt-2 space-y-2">
-              {[
-                "Shops", "Services",  "Education", "Hospitals",
-                "Hotels"
-              ].map((item, index) => (
-                <li key={index}>
-                  <Link to={'/categories'} className="hover:text-black text-gray-700 transition">
+          {/* Quick Links */}
+          <div className="lg:ml-8">
+            <h3 className="font-semibold mb-2 ">Quick Menu</h3>
+            <ul className="space-y-1">
+              {["Shops", "Services", "Education", "Hospitals", "Hotels"].map((item, i) => (
+                <li key={i}>
+                  <a href="/categories" className="hover:underline text-blue-100">
                     {item}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Other Products Section */}
-          <div className="ml-50">
-            <h3 className="text-lg font-semibold text-black  underline decoration-black">Other Products</h3>
-            <ul className="mt-2 space-y-2">
-              <li>
-                <Link to="/namma-karur-shopping" className="hover:text-blue-400 text-gray-700 transition">
-                  Dindigul Shopping
-                </Link>
-              </li>
-            </ul>
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-semibold mb-2">Contact</h3>
+            <p className="text-blue-100">📍 Dindigul, Tamil Nadu</p>
+            <p className="text-blue-100">📞 +91 987 654 3210</p>
+            <p className="text-blue-100">✉️ info@dindigulcity.com</p>
+            <div className="flex space-x-3 mt-3">
+              {["f", "t", "i", "w"].map((icon, i) => (
+                <span
+                  key={i}
+                  className="bg-white text-blue-700 w-7 h-7 flex items-center justify-center rounded-full text-sm hover:bg-yellow-300 transition"
+                >
+                  {icon}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Stay Connected Section */}
-        <div className="text-center mt-8">
-          <h3 className="text-lg font-semibold text-black">Stay Connected</h3>
-          <p className="text-sm text-gray-700 mt-2">
-            Follow us for updates and more information.
-          </p>
+        {/* Footer Bottom */}
+        <div className="text-center mt-6 border-t border-blue-500 pt-4 text-xs text-blue-200">
+          <p>&copy; {new Date().getFullYear()} Dindigul City. All rights reserved.</p>
+          <p>Made with ❤️ for Dindigul</p>
         </div>
-      
-        {/* Copyright */}
-        <div className="text-center mt-6 text-black text-sm">
-          &copy; {new Date().getFullYear()} Dindigul City. All rights reserved.
-        </div>
-     </div>
+      </div>
     </footer>
   );
 };

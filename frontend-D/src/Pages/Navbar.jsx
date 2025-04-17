@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import ButtonComponent from '../Components/ButtonComponent';
 
 const Navbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
     { name: 'Home', link: '/' },
     { name: 'Offers', link: '/offers' },
     { name: 'Categories', link: '/categories' },
-    { name: 'About us', link: '/aboutpage' },
+    { name: 'About ', link: '/aboutpage' },
     { name: 'Contact us', link: '/contact' },
   ];
 
@@ -45,7 +46,7 @@ const Navbar = () => {
               </ul>
               <Link 
                 to="/login" 
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors"
+                className="bg-blue-300 hover:bg-blue-400 text-white px-4 py-2 rounded-md transition-colors"
               >
                 Login
               </Link>
@@ -97,18 +98,11 @@ const Navbar = () => {
               ))}
             </ul>
             
-            <div className="mt-6 pt-6 border-t border-gray-200">
-              <Link 
-                to="/login" 
-                className="block w-full text-center bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors"
-                onClick={toggleSidebar}
-              >
-                Login
-              </Link>
+           <ButtonComponent className='mt-8'>Login</ButtonComponent>
             </div>
           </div>
         </div>
-      </div>
+      
     </>
   );
 };

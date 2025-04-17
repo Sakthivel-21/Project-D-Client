@@ -5,12 +5,12 @@ function AboutPage() {
   return (
 
     <>
-    <div className="w-full justify-center  bg-gradient-to-br from-blue-50 via-white to-blue-100 mt-12">
+    <div className="w-full justify-center mb-8 lg:mt-12 bg-gradient-to-br from-blue-50 via-white to-blue-100 ">
      
      
-    <h2 className="text-2xl font-bold text-black underline text-center decoration-blue-400 pt-6">About Dindigul</h2>
+    <h2 className="text-2xl font-bold text-black  text-center text-blue-400 pt-6">About Dindigul</h2>
        
-    <div className="w-full flex justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-white to-blue-100 mt-4">
+    <div className="w-full flex justify-center px-4 py-12  mt-4">
      
       <div className="w-full max-w-5xl flex flex-col md:flex-row items-center gap-4">
         

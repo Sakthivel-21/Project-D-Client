@@ -16,7 +16,7 @@ function Home() {
     <Mission/>
     <AboutPage/>
     <HomeCaregory/>
-    <OffersPage/>
+    
     <Contact/>
     </>
   )

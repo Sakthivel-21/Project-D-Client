@@ -28,7 +28,7 @@ function HomeCaregory() {
 
   return (
    <>
-   <h1 className='text-center p-8 font-bold text-2xl underline decoration-blue-400 '>Categories</h1>
+   <h1 className='text-center p-8 font-bold text-2xl text-blue-400 '>Categories</h1>
 
         {/*<div className="grid grid-cols-2 lg:grid-cols-5 gap-24 ml-8 mr-8">
           {data.map((item, index) => (
