@@ -17,34 +17,38 @@ import CategoriesList from './Pages/CategoriesList'
 import Contact from './Pages/Contact'
 import Mission from './Pages/Mission'
 import axios from 'axios';
+
+// Configure axios defaults for DRF compatibility
+axios.defaults.xsrfHeaderName = "X-CSRFToken";
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.withCredentials = true;
+
 import AboutPage from './Pages/AboutPage'
-import OffersPage from './Pages/Offers'
+import OffersPage from './Pages/Offers';
+import Profile from './Pages/Profile';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <BrowserRouter>
-        <Navbar/>
-         <Routes>
-           <Route path='/' element={<Home/>}></Route>
-           <Route path='/aboutpage' element={<AboutPage/>}></Route>
-           <Route path='/categories' element={<Categories/>}></Route>
-           <Route path='/login' element={<Login/>}></Route>
-           <Route path='/register' element={<Register/>}></Route>
-           <Route path='/categories/form' element={<CategoriesForm/>}></Route>
-           <Route path='/dindigul/categories/:id/places/' element={<CategoriesList/>}></Route>
-           <Route path='/dindigul/places/:id/' element={<CategoriesDetails/>}></Route>
-           
-           <Route path='/contact' element={<Contact/>}></Route>
-           <Route path='/mission' element={<Mission/>}></Route>
-           <Route path='/offers' element={<OffersPage/>}></Route>
-        </Routes> 
-        <Footer/>
-      </BrowserRouter>
-    </>
-  )
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        <Route path='/aboutpage' element={<AboutPage/>}></Route>
+        <Route path='/categories' element={<Categories/>}></Route>
+        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/register' element={<Register/>}></Route>
+        <Route path='/categories/form' element={<CategoriesForm/>}></Route>
+        <Route path='/dindigul/categories/:id/places/' element={<CategoriesList/>}></Route>
+        <Route path='/dindigul/places/:id/' element={<CategoriesDetails/>}></Route>
+        
+        <Route path='/contact' element={<Contact/>}></Route>
+        <Route path='/mission' element={<Mission/>}></Route>
+        <Route path='/offers' element={<OffersPage/>}></Route>
+        <Route path="/profile" element={<Profile />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App

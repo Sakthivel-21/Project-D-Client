@@ -8,17 +8,19 @@ import email from '../assets/mail.jpg';
 import instas from '../assets/instas.jpg';
 import internet from '../assets/internet.png';
 import twitter from '../assets/twitter.png';
+import { LoadingSkeleton } from '../Components/LoadingSkeleton';
 
 const CategoriesDetails = () => {
   axios.defaults.withCredentials = true;
   const [data, setData] = useState([]);
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/dindigul/places/${id}/`)
+    axios.get(`http://localhost:8000/dindigul/places/${id}/`)
       .then((response) => setData(response.data))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setIsLoading(false));
   }, [id]);
 
   const embedMapUrl = `https://www.bing.com/maps/embed?h=400&w=1500&cp=${data.latitude}~${data.longitude}&lvl=17&typ=d&sty=r&src=SHELL`;
@@ -46,10 +48,10 @@ const CategoriesDetails = () => {
     </div>
   );
 
-  if (!data) {
+  if (isLoading) {
     return (
-      <div className="text-center mt-10 text-xl font-medium">
-        Loading place details...
+      <div className="w-full mt-4 mb-8 bg-white rounded-2xl px-4 py-6">
+        <LoadingSkeleton type="detail" />
       </div>
     );
   }
