@@ -36,6 +36,7 @@ function App() {
            <Route path='/categories/form' element={<CategoriesForm/>}></Route>
            <Route path='/dindigul/categories/:id/places/' element={<CategoriesList/>}></Route>
            <Route path='/dindigul/places/:id/' element={<CategoriesDetails/>}></Route>
+           
            <Route path='/contact' element={<Contact/>}></Route>
            <Route path='/mission' element={<Mission/>}></Route>
            <Route path='/offers' element={<OffersPage/>}></Route>

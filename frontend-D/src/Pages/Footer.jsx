@@ -1,32 +1,41 @@
 import React from "react";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaWhatsapp,
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+} from "react-icons/fa";
 
 const Footer = () => {
   const createSlug = (text) => text.toLowerCase().replace(/\s/g, "-");
 
   return (
-    <footer className="bg-blue-400 text-white py-6">
-      <div className="container mx-auto px-4">
-        {/* Title */}
-        <div className="text-center mb-6">
-          <h1 className="text-xl font-bold">Dindigul City</h1>
-          <p className="text-sm text-blue-200">Your Ultimate Guide</p>
+    <footer className="bg-blue-400 text-white py-8">
+      <div className=" px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h1 className="text-2xl font-bold">Dindigul City</h1>
+          <p className="text-sm text-blue-100">Your Ultimate Guide</p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 text-sm lg:ml-64">
+        {/* Grid Section */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-8 text-sm lg:ml-64">
           {/* Services */}
-          <div>
-            <h3 className="font-semibold mb-2">Services</h3>
-            <ul className="space-y-1">
+          <div >
+            <h3 className="font-semibold mb-3">Services</h3>
+            <ul className="space-y-2 text-blue-100">
               {[
                 "Digital Marketing",
                 "Website & Mobile APP",
                 "Web-Hosting",
                 "Card Printing",
-                "Designing"
+                "Designing",
               ].map((service, i) => (
                 <li key={i}>
-                  <a href={`/${createSlug(service)}`} className="hover:underline text-blue-100">
+                  <a  className="hover:underline">
                     {service}
                   </a>
                 </li>
@@ -35,12 +44,12 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:ml-8">
-            <h3 className="font-semibold mb-2 ">Quick Menu</h3>
-            <ul className="space-y-1">
+          <div>
+            <h3 className="font-semibold mb-3">Quick Menu</h3>
+            <ul className="space-y-2 text-blue-100">
               {["Shops", "Services", "Education", "Hospitals", "Hotels"].map((item, i) => (
                 <li key={i}>
-                  <a href="/categories" className="hover:underline text-blue-100">
+                  <a href="/categories" className="hover:underline">
                     {item}
                   </a>
                 </li>
@@ -50,25 +59,38 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-semibold mb-2">Contact</h3>
-            <p className="text-blue-100">📍 Dindigul, Tamil Nadu</p>
-            <p className="text-blue-100">📞 +91 987 654 3210</p>
-            <p className="text-blue-100">✉️ info@dindigulcity.com</p>
-            <div className="flex space-x-3 mt-3">
-              {["f", "t", "i", "w"].map((icon, i) => (
+            <h3 className="font-semibold mb-3">Contact</h3>
+            <div className="space-y-2 text-blue-100">
+              <div className="flex items-center gap-2">
+                <FaMapMarkerAlt className="text-white" size={14} />
+                <span>Dindigul, Tamil Nadu</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaPhoneAlt className="text-white" size={14} />
+                <span>+91 987 654 3210</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-white" size={14} />
+                <span>info@dindigulcity.com</span>
+              </div>
+            </div>
+
+            {/* Social Icons */}
+            <div className="flex gap-3 mt-4">
+              {[FaFacebookF, FaTwitter, FaInstagram, FaWhatsapp].map((Icon, i) => (
                 <span
                   key={i}
-                  className="bg-white text-blue-700 w-7 h-7 flex items-center justify-center rounded-full text-sm hover:bg-yellow-300 transition"
+                  className="bg-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-yellow-300 transition"
                 >
-                  {icon}
+                  <Icon size={16} className="text-blue-700" />
                 </span>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Footer Bottom */}
-        <div className="text-center mt-6 border-t border-blue-500 pt-4 text-xs text-blue-200">
+        {/* Bottom Footer */}
+        <div className="text-center mt-10 border-t border-blue-300 pt-4 text-xs text-blue-100">
           <p>&copy; {new Date().getFullYear()} Dindigul City. All rights reserved.</p>
           <p>Made with ❤️ for Dindigul</p>
         </div>

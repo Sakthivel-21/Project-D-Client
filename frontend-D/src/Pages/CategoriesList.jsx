@@ -51,9 +51,9 @@ function CategoriesList() {
                </div>*/}
 
 <div className="w-full mt-6">
-      <h2 className="text-2xl font-semibold mb-8 text-center  underline decoration-blue-400">Places List</h2>
+      <h2 className="text-2xl font-bold text-center text-blue-400 mb-12">Places List</h2>
 
-      <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 ml-4 mr-4">
+      <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-1 ml-4 mr-4 mb-6">
         {data.map((item, index) => (
           <div
             key={index}
